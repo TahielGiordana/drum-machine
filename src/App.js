@@ -1,25 +1,69 @@
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const sounds = [{}];
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lastPlayed: "",
+    };
+    this.updateDisplay = this.updateDisplay.bind(this);
+  }
+
+  updateDisplay(clip) {
+    this.setState({ lastPlayed: clip });
+  }
+
+  render() {
+    return (
+      <div id="drum-machine">
+        <div id="display">{this.state.lastPlayed}</div>
+        <DrumPad
+          audioId="heater 1"
+          src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"
+          keyCode="Q"
+          updateDisplay={this.updateDisplay}
+        />
+        <DrumPad
+          audioId="heater 2"
+          src="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3"
+          keyCode="W"
+          updateDisplay={this.updateDisplay}
+        />
+      </div>
+    );
+  }
+}
+
+class DrumPad extends React.Component {
+  constructor(props) {
+    super(props);
+    this.playSound = this.playSound.bind(this);
+  }
+
+  playSound() {
+    let audio = document.getElementById(this.props.keyCode);
+    audio.play();
+    this.props.updateDisplay(this.props.audioId);
+  }
+
+  render() {
+    return (
+      <button
+        className="drum-pad"
+        id={this.props.audioId}
+        onClick={this.playSound}
+      >
+        {this.props.keyCode}
+        <audio
+          src={this.props.src}
+          className="clip"
+          id={this.props.keyCode}
+        ></audio>
+      </button>
+    );
+  }
 }
 
 export default App;
