@@ -1,13 +1,39 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+#drum-machine {
+  width: 100%;
+  background-color: cornflowerblue;
+  display: flex;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#display {
+  background-color: darkslategray;
+  color: aliceblue;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.drum-pad--wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.drum-pad {
+  background-color: deepskyblue;
+  color: deeppink;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 3px 5px 2px black;
+  font-size: 2rem;
+}
+
+.drum-pad:hover {
+  cursor: pointer;
+  box-shadow: 0 1px 5px 1px black;
+}
+
+.drum-pad:active {
+  background-color: rgb(6, 166, 219);
+  color: rgb(216, 18, 123);
 }

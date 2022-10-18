@@ -65,15 +65,17 @@ class App extends React.Component {
     return (
       <div id="drum-machine">
         <div id="display">{this.state.lastPlayed}</div>
-        {clips.map((clip) => (
-          <DrumPad
-            clipId={clip.clipId}
-            clipSrc={clip.clipSrc}
-            keyCode={clip.keyCode}
-            updateDisplay={this.updateDisplay}
-            key={clip.clipId}
-          />
-        ))}
+        <div className="drum-pad--wrapper">
+          {clips.map((clip) => (
+            <DrumPad
+              clipId={clip.clipId}
+              clipSrc={clip.clipSrc}
+              keyCode={clip.keyCode}
+              updateDisplay={this.updateDisplay}
+              key={clip.clipId}
+            />
+          ))}
+        </div>
       </div>
     );
   }
@@ -87,7 +89,7 @@ class DrumPad extends React.Component {
 
   componentDidMount() {
     document.addEventListener("keydown", (event) => {
-      if (event.key.toLowerCase() == this.props.keyCode.toLowerCase()) {
+      if (event.key.toLowerCase() === this.props.keyCode.toLowerCase()) {
         this.playSound();
       }
     });
