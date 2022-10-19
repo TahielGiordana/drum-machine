@@ -1,14 +1,30 @@
-#drum-machine {
-  width: 100%;
+body {
   background-color: cornflowerblue;
+  max-width: 100vw;
+  height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#drum-machine {
+  background-color: cornsilk;
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+  border-radius: 1rem;
 }
 
 #display {
+  min-width: fit-content;
+  width: 100px;
+  height: 1rem;
+  min-height: fit-content;
   background-color: darkslategray;
   color: aliceblue;
   padding: 1rem 2rem;
   text-align: center;
+  border-radius: 0.5rem;
 }
 
 .drum-pad--wrapper {
@@ -16,7 +32,6 @@
   grid-template-columns: repeat(3, 100px);
   grid-template-rows: repeat(3, 100px);
   gap: 1rem;
-  padding: 1rem;
 }
 
 .drum-pad {
